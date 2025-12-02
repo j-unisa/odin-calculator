@@ -5,7 +5,14 @@ let num2;
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
-buttons.addEventListener("click", (e) => display.textContent += e.target.textContent);
+buttons.addEventListener("click", function(e)
+    {
+        display.textContent += e.target.textContent;
+        // Store first number in num1
+        // Store operator in operator
+        // Store second number in num2
+        // Call operate() when = button is clicked
+    });
 
 function operate(num1, operator, num2)
 {
