@@ -23,8 +23,13 @@ html, body
 
 #display
 {
+    display: flex;
     height: 200px;
     border: 1px solid black;
+    font-size: 175px;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 50px;
 }
 
 #buttons
