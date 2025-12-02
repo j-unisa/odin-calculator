@@ -2,6 +2,11 @@ let num1;
 let operator;
 let num2;
 
+const display = document.querySelector("#display");
+const buttons = document.querySelector("#buttons");
+
+buttons.addEventListener("click", (e) => display.textContent += e.target.textContent);
+
 function operate(num1, operator, num2)
 {
     switch(operator)
@@ -20,25 +25,21 @@ function operate(num1, operator, num2)
     }
 }
 
-// Add
 function add(x, y)
 {
     return x + y;
 }
 
-// Subtract
 function subtract(x, y)
 {
     return x - y;
 }
 
-// Multiply
 function multiply(x, y)
 {
     return x * y;
 }
 
-// Divide
 function divide(x, y)
 {
     return x / y;
