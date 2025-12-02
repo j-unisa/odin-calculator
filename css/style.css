@@ -1,1 +1,44 @@
-/* External stylesheet */
+/* === Reset and box-sizing === */
+*,
+*::before,
+*::after 
+{
+  box-sizing: border-box;
+}
+
+html, body
+{
+    margin: 0;
+    padding: 0;
+}
+
+#calculator
+{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    min-height: 1000px;
+    margin: auto;
+}
+
+#display
+{
+    display: flex;
+    min-height: 200px;
+    border: 1px solid black;
+}
+
+#buttons
+{
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 auto;
+    overflow-x: auto;
+}
+
+button
+{
+    flex: 0 0 200px;
+    min-width: 200px;
+    font-size: 50px;
+}
