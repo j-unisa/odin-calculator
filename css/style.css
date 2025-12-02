@@ -16,15 +16,14 @@ html, body
 {
     display: flex;
     flex-direction: column;
-    max-width: 800px;
-    min-height: 1000px;
+    width: 800px;
+    height: 1000px;
     margin: auto;
 }
 
 #display
 {
-    display: flex;
-    min-height: 200px;
+    height: 200px;
     border: 1px solid black;
 }
 
@@ -32,13 +31,12 @@ html, body
 {
     display: flex;
     flex-flow: row wrap;
-    flex: 1 0 auto;
-    overflow-x: auto;
+    flex: 1;
 }
 
 button
 {
     flex: 0 0 200px;
-    min-width: 200px;
     font-size: 50px;
+    padding: 0;
 }
