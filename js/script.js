@@ -71,6 +71,7 @@ buttons.addEventListener("click", function(e)
             {
                 display.textContent = "";
             }
+            
             display.textContent += e.target.textContent;
             num1 += e.target.textContent;
         }
