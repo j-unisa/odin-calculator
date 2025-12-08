@@ -22,6 +22,11 @@ buttons.addEventListener("click", function(e)
         {
             num2 = Number(num2);
             display.textContent = operate(num1, operator, num2);
+
+            // Clear everything for next calculation
+            num1 = "";
+            num2 = "";
+            operator = "=";
         }
         else if (operators.includes(e.target.textContent))
         {
@@ -62,6 +67,10 @@ buttons.addEventListener("click", function(e)
         // For first number
         else if (numbers.includes(e.target.textContent))
         {
+            if (operator == "=")
+            {
+                display.textContent = "";
+            }
             display.textContent += e.target.textContent;
             num1 += e.target.textContent;
         }
