@@ -1,27 +1,69 @@
-let num1;
+let num1 = "";
 let operator;
-let num2;
+let num2 = "";
 
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
 buttons.addEventListener("click", function(e)
     {
-        display.textContent += e.target.textContent;
         const operators = "+-*/";
+        const numbers = "0123456789";
 
-        // Store first number in num1
-        if ((typeof +e.target.textContent == "number") && !Number.isNaN(+e.target.textContent))
+        // If button is +-*/
+        // then don't display it
+        // then stop populating num1
+        // and convert it to a Number
+        // and start populating num2 if next button is a number
+        // If +-*/=
+        // then initialize operate()
+
+        if (e.target.textContent == "=")
         {
-            // TODO: Figure out how to differentiate between first number and second number
-            num1 = +e.target.textContent;
-            console.log(+e.target.textContent);
+            num2 = Number(num2);
+            display.textContent = operate(num1, operator, num2);
         }
-        // Store operator in operator
         else if (operators.includes(e.target.textContent))
         {
-            // Replace with code to store operator in operator variable
-            console.log("I'm an operator");
+            // If operator button is clicked after second number
+            if (typeof num1 == "number")
+            {
+                num2 = Number(num2);
+                display.textContent = operate(num1, operator, num2)
+                num1 = Number(display.textContent);
+                num2 = "";
+            }
+
+            // Store operator in operator variable
+            operator = e.target.textContent;
+
+            // Convert num1 to Number
+            num1 = Number(num1);
+
+            // Tests
+            console.log(num1);
+            console.log(typeof num1);
+            console.log(operator);;
+        }
+        // For second number
+        else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
+        {
+            if (num2)
+            {
+                display.textContent += e.target.textContent;
+            }
+            else
+            {
+                display.textContent = e.target.textContent;
+            }
+            num2 += e.target.textContent;
+            console.log(num2);
+        }
+        // For first number
+        else if (numbers.includes(e.target.textContent))
+        {
+            display.textContent += e.target.textContent;
+            num1 += e.target.textContent;
         }
 
         // Store second number in num2
