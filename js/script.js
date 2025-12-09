@@ -21,13 +21,21 @@ buttons.addEventListener("click", function(e)
         // For = button
         if (e.target.textContent == "=")
         {
-            num2 = Number(num2);
-            display.textContent = operate(num1, operator, num2);
+            if ((!num1) || (!num2))
+            {
+                return;
+            }
+            else
+            {
+                num2 = Number(num2);
+                display.textContent = operate(num1, operator, num2);
 
-            // Clear everything for next calculation
-            num1 = "";
-            num2 = "";
-            operator = "=";
+                // Clear everything for next calculation
+                num1 = "";
+                num2 = "";
+                operator = "=";
+
+            }
         }
         // For +-*/ buttons
         else if (operators.includes(e.target.textContent))
@@ -47,11 +55,19 @@ buttons.addEventListener("click", function(e)
             // Convert num1 to Number
             num1 = Number(num1);
         }
+        // For clear button
+        else if (e.target.textContent == "Clr")
+        {
+            display.textContent = ""
+            num1 = "";
+            num2 = "";
+            operator = "=";
+        }
         // For second number
         else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
         {
             // If the second number already contains input 
-            if ((num2) && display.textContent.length < 8)
+            if ((num2) && display.textContent.length < 7)
             {
                 display.textContent += e.target.textContent;
                 num2 += e.target.textContent;
@@ -71,7 +87,7 @@ buttons.addEventListener("click", function(e)
                 display.textContent = "";
             }
             
-            if (display.textContent.length < 8)
+            if (display.textContent.length < 7)
             {
                 display.textContent += e.target.textContent;
                 num1 += e.target.textContent;
