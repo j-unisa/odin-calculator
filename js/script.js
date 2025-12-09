@@ -46,27 +46,22 @@ buttons.addEventListener("click", function(e)
 
             // Convert num1 to Number
             num1 = Number(num1);
-
-            // Tests
-            console.log(num1);
-            console.log(typeof num1);
-            console.log(operator);;
         }
         // For second number
         else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
         {
             // If the second number already contains input 
-            if (num2)
+            if ((num2) && display.textContent.length < 8)
             {
                 display.textContent += e.target.textContent;
+                num2 += e.target.textContent;
             }
             // If the second number contains no input
-            else
+            else if (!num2)
             {
                 display.textContent = e.target.textContent;
+                num2 += e.target.textContent;
             }
-            num2 += e.target.textContent;
-            console.log(num2);
         }
         // For first number
         else if (numbers.includes(e.target.textContent))
@@ -107,6 +102,10 @@ function operate(num1, operator, num2)
 
 function add(x, y)
 {
+    if (((x + y).toString().includes(".")) && ((x + y).toString().length >= 14))
+    {
+        // TODO: Round to 12th decimal place;
+    }
     return x + y;
 }
 
