@@ -8,7 +8,7 @@ const buttons = document.querySelector("#buttons");
 buttons.addEventListener("click", function(e)
     {
         const operators = "+-*/";
-        const numbers = "0123456789";
+        const numbers = "0123456789.";
 
         // If button is +-*/
         // then don't display it
@@ -18,6 +18,7 @@ buttons.addEventListener("click", function(e)
         // If +-*/=
         // then initialize operate()
 
+        // For = button
         if (e.target.textContent == "=")
         {
             num2 = Number(num2);
@@ -28,6 +29,7 @@ buttons.addEventListener("click", function(e)
             num2 = "";
             operator = "=";
         }
+        // For +-*/ buttons
         else if (operators.includes(e.target.textContent))
         {
             // If operator button is clicked after second number
@@ -72,8 +74,11 @@ buttons.addEventListener("click", function(e)
                 display.textContent = "";
             }
             
-            display.textContent += e.target.textContent;
-            num1 += e.target.textContent;
+            if (display.textContent.length < 8)
+            {
+                display.textContent += e.target.textContent;
+                num1 += e.target.textContent;
+            }        
         }
 
         // Store second number in num2
