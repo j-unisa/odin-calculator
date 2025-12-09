@@ -55,10 +55,12 @@ buttons.addEventListener("click", function(e)
         // For second number
         else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
         {
+            // If the second number already contains input 
             if (num2)
             {
                 display.textContent += e.target.textContent;
             }
+            // If the second number contains no input
             else
             {
                 display.textContent = e.target.textContent;
