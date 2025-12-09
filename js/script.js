@@ -102,10 +102,6 @@ function operate(num1, operator, num2)
 
 function add(x, y)
 {
-    if (((x + y).toString().includes(".")) && ((x + y).toString().length >= 14))
-    {
-        // TODO: Round to 12th decimal place;
-    }
     return x + y;
 }
 
