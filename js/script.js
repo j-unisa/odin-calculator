@@ -83,8 +83,15 @@ buttons.addEventListener("click", function(e)
             // If the second number contains no input
             else if (!num2)
             {
-                // TODO: Add logic for decimal being the first input
-                display.textContent = e.target.textContent;
+                // First input is a decimal point
+                if (e.target.textContent == ".")
+                {
+                    display.textContent = "0."
+                }
+                else
+                {
+                    display.textContent = e.target.textContent;
+                }
                 num2 += e.target.textContent;
             }
         }
@@ -104,7 +111,15 @@ buttons.addEventListener("click", function(e)
                 {
                     return;
                 }
-                display.textContent += e.target.textContent;
+                // First input is a decimal point
+                else if ((e.target.textContent == ".") && !num1)
+                {
+                    display.textContent = "0."
+                }
+                else
+                {
+                    display.textContent += e.target.textContent;
+                }
                 num1 += e.target.textContent;
             }        
         }
