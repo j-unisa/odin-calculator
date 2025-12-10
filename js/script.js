@@ -69,12 +69,21 @@ buttons.addEventListener("click", function(e)
             // If the second number already contains input 
             if ((num2) && display.textContent.length < 7)
             {
-                display.textContent += e.target.textContent;
-                num2 += e.target.textContent;
+                // Disable multiple decimal points
+                if ((num2.includes(".")) && (e.target.textContent == "."))
+                {
+                    return;
+                }
+                else
+                {
+                    display.textContent += e.target.textContent;
+                    num2 += e.target.textContent;
+                }
             }
             // If the second number contains no input
             else if (!num2)
             {
+                // TODO: Add logic for decimal being the first input
                 display.textContent = e.target.textContent;
                 num2 += e.target.textContent;
             }
@@ -82,6 +91,7 @@ buttons.addEventListener("click", function(e)
         // For first number
         else if (numbers.includes(e.target.textContent))
         {
+            // Previous calculation is complete
             if (operator == "=")
             {
                 display.textContent = "";
@@ -89,6 +99,11 @@ buttons.addEventListener("click", function(e)
             
             if (display.textContent.length < 7)
             {
+                // Disable multiple decimal points
+                if ((num1.includes(".")) && (e.target.textContent == "."))
+                {
+                    return;
+                }
                 display.textContent += e.target.textContent;
                 num1 += e.target.textContent;
             }        
