@@ -52,8 +52,15 @@ buttons.addEventListener("click", function(e)
             // Store operator in operator variable
             operator = e.target.textContent;
 
+            if (!num1)
+            {
+                return;
+            }
             // Convert num1 to Number
-            num1 = Number(num1);
+            else
+            {
+                num1 = Number(num1);
+            }
         }
         // For clear button
         else if (e.target.textContent == "Clr")
@@ -102,6 +109,7 @@ buttons.addEventListener("click", function(e)
             if (operator == "=")
             {
                 display.textContent = "";
+                operator = "";
             }
             
             if (display.textContent.length < 7)
@@ -116,9 +124,13 @@ buttons.addEventListener("click", function(e)
                 {
                     display.textContent = "0."
                 }
-                else
+                else if (num1)
                 {
                     display.textContent += e.target.textContent;
+                }
+                else if ((!num1))
+                {
+                    display.textContent = e.target.textContent;
                 }
                 num1 += e.target.textContent;
             }        
