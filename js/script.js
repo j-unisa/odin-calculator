@@ -18,10 +18,12 @@ buttons.addEventListener("click", function(e)
         // If +-*/=
         // then initialize operate()
 
+        // TODO: Create logic to handle 01 changing to 1
+        
         // For = button
         if (e.target.textContent == "=")
         {
-            if ((num1 == "") || (num2 == ""))
+            if ((num1 === "") || (num2 === ""))
             {
                 return;
             }
@@ -53,7 +55,7 @@ buttons.addEventListener("click", function(e)
             operator = e.target.textContent;
 
             // Prevent conversion of empty string to 0
-            if (num1 == "")
+            if (num1 === "")
             {
                 return;
             }
@@ -94,7 +96,7 @@ buttons.addEventListener("click", function(e)
                 }
             }
             // If the second number contains no input
-            else if (num2 == "")
+            else if (num2 === "")
             {
                 // First input is a decimal point
                 if (e.target.textContent == ".")
@@ -126,7 +128,7 @@ buttons.addEventListener("click", function(e)
                     return;
                 }
                 // First input is a decimal point
-                else if ((e.target.textContent == ".") && (num1 == ""))
+                else if ((e.target.textContent == ".") && (num1 === ""))
                 {
                     display.textContent = "0."
                 }
@@ -134,7 +136,7 @@ buttons.addEventListener("click", function(e)
                 {
                     display.textContent += e.target.textContent;
                 }
-                else if ((num1 == ""))
+                else if ((num1 === ""))
                 {
                     display.textContent = e.target.textContent;
                 }
