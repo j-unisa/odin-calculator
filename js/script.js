@@ -19,7 +19,8 @@ buttons.addEventListener("click", function(e)
         // then initialize operate()
 
         // TODO: Create logic to handle 01 changing to 1
-        
+        // TODO: Add TDD
+
         // For = button
         if (e.target.textContent == "=")
         {
