@@ -70,6 +70,11 @@ buttons.addEventListener("click", function(e)
             num2 = "";
             operator = "=";
         }
+        // For leading zeros
+        else if ((display.textContent == "0") && (e.target.textContent == "0"))
+        {
+            return;
+        }
         // For second number
         else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
         {
