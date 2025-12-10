@@ -165,17 +165,17 @@ function operate(num1, operator, num2)
 
 function add(x, y)
 {
-    return x + y;
+    return decimalFix(x + y);
 }
 
 function subtract(x, y)
 {
-    return x - y;
+    return decimalFix(x - y);
 }
 
 function multiply(x, y)
 {
-    return x * y;
+    return decimalFix(x * y);
 }
 
 function divide(x, y)
@@ -184,5 +184,10 @@ function divide(x, y)
     {
         return "Error"
     }
-    return x / y;
+    return decimalFix(x / y);
+}
+
+function decimalFix(num) 
+{
+  return Number(num.toFixed(15));
 }
