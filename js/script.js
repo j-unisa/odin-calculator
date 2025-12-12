@@ -18,7 +18,6 @@ buttons.addEventListener("click", function(e)
         // If +-*/=
         // then initialize operate()
 
-        // TODO: Add backspace logic
         // TODO: Add keyboard support
         // TODO: Add TDD
 
@@ -74,6 +73,27 @@ buttons.addEventListener("click", function(e)
             num1 = "";
             num2 = "";
             operator = "=";
+        }
+        // For delete button
+        else if (e.target.textContent == "Del")
+        {
+            display.textContent = display.textContent.slice(0, -1);
+
+            // For num2
+            if (num2 != "")
+            {
+                num2 = num2.slice(0, -1);
+            }
+            // Delete is pressed after fully deleting num2
+            else if ((num1 != "") && (operators.includes(operator)) && (num2 == "") && (display.textContent == ""))
+            {
+                return;
+            }
+            // For num1
+            else
+            {
+                num1 = num1.toString().slice(0, -1);
+            }
         }
         // For leading zeros
         else if ((display.textContent == "0") && (e.target.textContent == "0"))
