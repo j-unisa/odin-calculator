@@ -18,7 +18,6 @@ buttons.addEventListener("click", function(e)
         // If +-*/=
         // then initialize operate()
 
-        // TODO: Create logic to handle 01 changing to 1
         // TODO: Add TDD
 
         // For = button
@@ -90,6 +89,19 @@ buttons.addEventListener("click", function(e)
                 {
                     return;
                 }
+                // For leading zero
+                else if ((display.textContent == "0") && numbers.includes(e.target.textContent))
+                {
+                    if (e.target.textContent == ".")
+                    {
+                        display.textContent = "0.";
+                    }
+                    else
+                    {
+                        display.textContent = e.target.textContent;
+                    }
+                    num2 += e.target.textContent;
+                }
                 else
                 {
                     display.textContent += e.target.textContent;
@@ -102,7 +114,7 @@ buttons.addEventListener("click", function(e)
                 // First input is a decimal point
                 if (e.target.textContent == ".")
                 {
-                    display.textContent = "0."
+                    display.textContent = "0.";
                 }
                 else
                 {
@@ -133,10 +145,24 @@ buttons.addEventListener("click", function(e)
                 {
                     display.textContent = "0."
                 }
+                // For leading zero
+                else if ((num1 == "0") && numbers.includes(e.target.textContent))
+                {
+                    if (e.target.textContent == ".")
+                    {
+                        display.textContent = "0.";
+                    }
+                    else
+                    {
+                        display.textContent = e.target.textContent;
+                    }
+                }
+                // TODO: Maybe reposition this to else since this might be for normal instances
                 else if (num1)
                 {
                     display.textContent += e.target.textContent;
                 }
+                // For the start of the next calculation
                 else if ((num1 === ""))
                 {
                     display.textContent = e.target.textContent;
