@@ -18,6 +18,8 @@ buttons.addEventListener("click", function(e)
         // If +-*/=
         // then initialize operate()
 
+        // TODO: Add backspace logic
+        // TODO: Add keyboard support
         // TODO: Add TDD
 
         // For = button
