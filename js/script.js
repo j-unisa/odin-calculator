@@ -10,14 +10,6 @@ buttons.addEventListener("click", function(e)
         const operators = "+-*/";
         const numbers = "0123456789.";
 
-        // If button is +-*/
-        // then don't display it
-        // then stop populating num1
-        // and convert it to a Number
-        // and start populating num2 if next button is a number
-        // If +-*/=
-        // then initialize operate()
-
         // TODO: Add keyboard support
         // TODO: Add TDD
 
@@ -192,9 +184,6 @@ buttons.addEventListener("click", function(e)
                 num1 += e.target.textContent;
             }        
         }
-
-        // Store second number in num2
-        // Call operate() when = button is clicked
     });
 
 function operate(num1, operator, num2)
