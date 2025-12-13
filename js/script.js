@@ -5,6 +5,10 @@ let num2 = "";
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
+// TODO: Add keydown event handler
+// TODO: Add click event handler
+
+// TODO: Change to function
 buttons.addEventListener("click", function(e)
     {
         const operators = "+-*/";
