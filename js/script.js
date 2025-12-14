@@ -11,7 +11,10 @@ buttons.addEventListener("click", eventhandler);
 // TODO: Add keydown event handler
 
 // TODO: Figure out logic for when num1 input is entered
-// then the Delete button is pressed after display of num1 is fully deleted
+// then operator is selected
+// then after display of num1 is fully deleted
+// the Delete button is pressed again
+// Right now, num1 does not delete, when it should
 function eventhandler(e)
 {
     const operators = "+-*/";
@@ -76,15 +79,23 @@ function eventhandler(e)
     // For delete button
     else if (e.target.textContent == "Del")
     {
-        display.textContent = display.textContent.slice(0, -1);
-
         // For num2
         if (num2 != "")
         {
             num2 = num2.slice(0, -1);
         }
+        // After num1 is entered and operator is selected
+        else if ( (num1 != "") && (num2 == "") && (operators.includes(operator)) && (display.textContent != ""))
+        {
+            num1 = num1.toString().slice(0, -1);
+        }
         // Delete is pressed after fully deleting num2
-        else if ((num1 != "") && (operators.includes(operator)) && (num2 == "") && (display.textContent == ""))
+        else if ((typeof num1 == "number") && (num1 != "") && (num2 == "") && (operators.includes(operator)) && (display.textContent == ""))
+        {
+            return;
+        }
+        // After operator is selected and num1 is fully deleted, Delete button is pressed again
+        else if ((typeof num1 == "string") && (num1 == "") && (num2 == "") && (operators.includes(operator)) && (display.textContent == ""))
         {
             return;
         }
@@ -93,6 +104,19 @@ function eventhandler(e)
         {
             num1 = num1.toString().slice(0, -1);
         }
+        display.textContent = display.textContent.slice(0, -1);
+
+        // After num2 is fully deleted, Delete button is pressed again
+        // typeof num1 == "number", num1 != "", num2 == "", operators.includes(operator) == true, display.textContent == ""
+        // vs
+        // After num1 is entered and operator is selected
+        // typeof num1 == "number", num1 != "", num2 == "", operators.includes(operator) == true, display.textContent != "" 
+        // vs
+        // After num1 is entered and operator is selected and only one digit remains, Delete is pressed again
+        // (typeof num1 == "number") && (num1 )
+        // vs
+        // After operator is selected and num1 is fully deleted, Delete button is pressed again
+        // typeof num1 == ???, num1 == ???, num2 == "", operators.includes(operator) == true, display.textContent == ""
     }
     // For leading zeros
     else if ((display.textContent == "0") && (e.target.textContent == "0"))
