@@ -5,21 +5,18 @@ let num2 = "";
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
-buttons.addEventListener("click", eventhandler);
+buttons.addEventListener("click", (e) => eventhandler(e.target.textContent));
+document.addEventListener("keydown", (e) => eventhandler(e.key));
 
-// TODO: Add keydown event handler
-document.addEventListener("keydown", eventhandler);
-
-function eventhandler(e)
+function eventhandler(value)
 {
     const operators = "+-*/";
     const numbers = "0123456789.";
 
-    // TODO: Add keyboard support
     // TODO: Add TDD
 
     // For = button
-    if (e.target.textContent == "=")
+    if ((value == "=") || (value == "Enter"))
     {
         if ((num1 === "") || (num2 === ""))
         {
@@ -38,7 +35,7 @@ function eventhandler(e)
         }
     }
     // For +-*/ buttons
-    else if (operators.includes(e.target.textContent))
+    else if (operators.includes(value))
     {
         // If operator button is clicked after second number
         if (typeof num1 == "number")
@@ -50,7 +47,7 @@ function eventhandler(e)
         }
 
         // Store operator in operator variable
-        operator = e.target.textContent;
+        operator = value;
 
         // Prevent conversion of empty string to 0
         if (num1 === "")
@@ -64,7 +61,7 @@ function eventhandler(e)
         }
     }
     // For clear button
-    else if (e.target.textContent == "Clr")
+    else if (value == "Clr")
     {
         display.textContent = ""
         num1 = "";
@@ -72,7 +69,7 @@ function eventhandler(e)
         operator = "=";
     }
     // For delete button
-    else if (e.target.textContent == "Del")
+    else if ((value == "Del") || (value == "Backspace"))
     {
         // For num2
         if (num2 != "")
@@ -114,57 +111,57 @@ function eventhandler(e)
         // typeof num1 == ???, num1 == ???, num2 == "", operators.includes(operator) == true, display.textContent == ""
     }
     // For leading zeros
-    else if ((display.textContent == "0") && (e.target.textContent == "0"))
+    else if ((display.textContent == "0") && (value == "0"))
     {
         return;
     }
     // For second number
-    else if ((typeof num1 == "number") && numbers.includes(e.target.textContent))
+    else if ((typeof num1 == "number") && numbers.includes(value))
     {
         // If the second number already contains input 
         if ((num2) && display.textContent.length < 7)
         {
             // Disable multiple decimal points
-            if ((num2.includes(".")) && (e.target.textContent == "."))
+            if ((num2.includes(".")) && (value == "."))
             {
                 return;
             }
             // For leading zero
-            else if ((display.textContent == "0") && numbers.includes(e.target.textContent))
+            else if ((display.textContent == "0") && numbers.includes(value))
             {
-                if (e.target.textContent == ".")
+                if (value == ".")
                 {
                     display.textContent = "0.";
                 }
                 else
                 {
-                    display.textContent = e.target.textContent;
+                    display.textContent = value;
                 }
-                num2 += e.target.textContent;
+                num2 += value;
             }
             else
             {
-                display.textContent += e.target.textContent;
-                num2 += e.target.textContent;
+                display.textContent += value;
+                num2 += value;
             }
         }
         // If the second number contains no input
         else if (num2 === "")
         {
             // First input is a decimal point
-            if (e.target.textContent == ".")
+            if (value == ".")
             {
                 display.textContent = "0.";
             }
             else
             {
-                display.textContent = e.target.textContent;
+                display.textContent = value;
             }
-            num2 += e.target.textContent;
+            num2 += value;
         }
     }
     // For first number
-    else if (numbers.includes(e.target.textContent))
+    else if (numbers.includes(value))
     {
         // Previous calculation is complete
         if (operator == "=")
@@ -176,38 +173,38 @@ function eventhandler(e)
         if (display.textContent.length < 7)
         {
             // Disable multiple decimal points
-            if ((num1.includes(".")) && (e.target.textContent == "."))
+            if ((num1.includes(".")) && (value == "."))
             {
                 return;
             }
             // First input is a decimal point
-            else if ((e.target.textContent == ".") && (num1 === ""))
+            else if ((value == ".") && (num1 === ""))
             {
                 display.textContent = "0."
             }
             // For leading zero
-            else if ((num1 == "0") && numbers.includes(e.target.textContent))
+            else if ((num1 == "0") && numbers.includes(value))
             {
-                if (e.target.textContent == ".")
+                if (value == ".")
                 {
                     display.textContent = "0.";
                 }
                 else
                 {
-                    display.textContent = e.target.textContent;
+                    display.textContent = value;
                 }
             }
             // TODO: Maybe reposition this to else since this might be for normal instances
             else if (num1)
             {
-                display.textContent += e.target.textContent;
+                display.textContent += value;
             }
             // For the start of the next calculation
             else if ((num1 === ""))
             {
-                display.textContent = e.target.textContent;
+                display.textContent = value;
             }
-            num1 += e.target.textContent;
+            num1 += value;
         }        
     }
 }
