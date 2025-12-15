@@ -5,7 +5,12 @@ let num2 = "";
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
-buttons.addEventListener("click", (e) => eventhandler(e.target.textContent));
+buttons.addEventListener("click", (e) => 
+    {
+        eventhandler(e.target.textContent)
+        document.activeElement.blur();
+    });
+
 document.addEventListener("keydown", (e) => eventhandler(e.key));
 
 function eventhandler(value)
