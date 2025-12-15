@@ -5,16 +5,11 @@ let num2 = "";
 const display = document.querySelector("#display");
 const buttons = document.querySelector("#buttons");
 
-// TODO: Add click event handler
 buttons.addEventListener("click", eventhandler);
 
 // TODO: Add keydown event handler
+document.addEventListener("keydown", eventhandler);
 
-// TODO: Figure out logic for when num1 input is entered
-// then operator is selected
-// then after display of num1 is fully deleted
-// the Delete button is pressed again
-// Right now, num1 does not delete, when it should
 function eventhandler(e)
 {
     const operators = "+-*/";
