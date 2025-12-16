@@ -102,18 +102,6 @@ function eventhandler(value)
             num1 = num1.toString().slice(0, -1);
         }
         display.textContent = display.textContent.slice(0, -1);
-
-        // After num2 is fully deleted, Delete button is pressed again
-        // typeof num1 == "number", num1 != "", num2 == "", operators.includes(operator) == true, display.textContent == ""
-        // vs
-        // After num1 is entered and operator is selected
-        // typeof num1 == "number", num1 != "", num2 == "", operators.includes(operator) == true, display.textContent != "" 
-        // vs
-        // After num1 is entered and operator is selected and only one digit remains, Delete is pressed again
-        // (typeof num1 == "number") && (num1 )
-        // vs
-        // After operator is selected and num1 is fully deleted, Delete button is pressed again
-        // typeof num1 == ???, num1 == ???, num2 == "", operators.includes(operator) == true, display.textContent == ""
     }
     // For leading zeros
     else if ((display.textContent == "0") && (value == "0"))
