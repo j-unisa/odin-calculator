@@ -199,15 +199,14 @@ function eventhandler(value)
                     display.textContent = value;
                 }
             }
-            // TODO: Maybe reposition this to else since this might be for normal instances
-            else if (num1)
-            {
-                display.textContent += value;
-            }
             // For the start of the next calculation
             else if ((num1 === ""))
             {
                 display.textContent = value;
+            }
+            else
+            {
+                display.textContent += value;
             }
             num1 += value;
         }        
