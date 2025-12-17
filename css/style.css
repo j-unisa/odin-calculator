@@ -12,6 +12,7 @@ html, body
     padding: 0;
 }
 
+/* === Calculator Layout === */
 #calculator
 {
     display: flex;
@@ -21,27 +22,32 @@ html, body
     margin: auto;
 }
 
+/* === Display === */
 #display
 {
     display: flex;
     height: 200px;
-    border: 1px solid black;
-    font-size: 175px;
     align-items: center;
+
+    border: 1px solid black;
     padding-right: 50px;
-    overflow-x: scroll;
+    font-size: 175px;
+    
+    overflow-x: auto;
 }
 
+/* === Buttons Container === */
 #buttons
 {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     flex: 1;
 }
 
+/* === Buttons === */
 button
 {
     flex: 0 0 200px;
-    font-size: 50px;
     padding: 0;
+    font-size: 50px;
 }
