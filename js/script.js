@@ -7,20 +7,23 @@ const buttons = document.querySelector("#buttons");
 
 buttons.addEventListener("click", (e) => 
     {
-        eventhandler(e.target.textContent)
+        eventHandler(e.target.textContent);
         document.activeElement.blur();
     });
 
-document.addEventListener("keydown", (e) => eventhandler(e.key));
+document.addEventListener("keydown", (e) => 
+    {
+        eventHandler(e.key);
+    });
 
-function eventhandler(value)
+function eventHandler(value)
 {
     const operators = "+-*/";
     const numbers = "0123456789.";
 
-    // TODO: Add TDD
-
-    // For = button
+    /* =======================
+       Equals / Enter
+    ======================= */
     if ((value == "=") || (value == "Enter"))
     {
         if ((num1 === "") || (num2 === ""))
@@ -39,7 +42,10 @@ function eventhandler(value)
 
         }
     }
-    // For +-*/ buttons
+
+    /* =======================
+       Operators (+ - * /)
+    ======================= */
     else if (operators.includes(value))
     {
         // If operator button is clicked after second number
@@ -65,7 +71,10 @@ function eventhandler(value)
             num1 = Number(num1);
         }
     }
-    // For clear button
+
+    /* =======================
+       Clear
+    ======================= */
     else if (value == "Clr")
     {
         display.textContent = ""
@@ -73,7 +82,10 @@ function eventhandler(value)
         num2 = "";
         operator = "=";
     }
-    // For delete button
+
+    /* =======================
+       Delete / Backspace
+    ======================= */
     else if ((value == "Del") || (value == "Backspace"))
     {
         // For num2
@@ -103,12 +115,18 @@ function eventhandler(value)
         }
         display.textContent = display.textContent.slice(0, -1);
     }
-    // For leading zeros
+
+    /* =======================
+       Prevent leading zero
+    ======================= */
     else if ((display.textContent == "0") && (value == "0"))
     {
         return;
     }
-    // For second number
+
+    /* =======================
+       Second number input
+    ======================= */
     else if ((typeof num1 == "number") && numbers.includes(value))
     {
         // If the second number already contains input 
@@ -153,7 +171,10 @@ function eventhandler(value)
             num2 += value;
         }
     }
-    // For first number
+
+    /* =======================
+       First number input
+    ======================= */
     else if (numbers.includes(value))
     {
         // Previous calculation is complete
